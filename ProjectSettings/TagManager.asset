@@ -5,6 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - FX
+  - RoomLight
+  - FLOOR
+  - CEILING
+  - WALL_FACE
+  - DOOR_FRAME
+  - DESK
+  - COUCH
   layers:
   - Default
   - TransparentFX

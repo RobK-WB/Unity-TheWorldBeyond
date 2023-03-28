@@ -39,7 +39,14 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
     var classification = GetComponent<OVRSemanticClassification>();
     if (!classification) return;
 
-    foreach (LabelGeometryPair pair in desiredSwitches)
+        Debug.LogError("LABEL:  " + classification.Labels[0]);
+        //foreach (string label in classification.Labels)
+         //   Debug.LogWarning(label);
+        gameObject.tag = classification.Labels[0];
+        //TEST TAG
+        //gameObject.tag = "Player";
+        //   classification.
+        foreach (LabelGeometryPair pair in desiredSwitches)
     {
       if (classification.Contains(pair.label))
       {
