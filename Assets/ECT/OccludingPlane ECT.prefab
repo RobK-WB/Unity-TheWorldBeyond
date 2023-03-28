@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planePrefab: {fileID: 102490448831091297}
   volumePrefab: {fileID: 8013016026686888416, guid: 39405b287cfc44c7c8c0df5ff4b5f2b3, type: 3}
+  meshRenderer: {fileID: 4192131775074448735}
+  passthroughMaterial: {fileID: 2100000, guid: 8e63e1588afb49540a7c512a22c5a456, type: 2}
+  debugMaterial: {fileID: 2100000, guid: 7245164ab2418f842978c3bf27ce1ec8, type: 2}
   desiredSwitches:
   - label: DESK
     desiredGeometryType: 1
