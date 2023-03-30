@@ -45,7 +45,6 @@ public class SamplePetExperience : MonoBehaviour
     void InitializeRoom()
     {
         _ground.BuildNavMesh();
-        Debug.LogError("NAVMESH BUILT");
         _roomReady = true;
     }
 

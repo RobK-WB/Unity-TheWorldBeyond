@@ -136,6 +136,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1132682185376712905}
   - component: {fileID: 8013016026686888416}
+  - component: {fileID: 705740130247293175}
   m_Layer: 9
   m_Name: OccludingVolume ECT
   m_TagString: Untagged
@@ -170,3 +171,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ab3ec25e32ce0c4380714d75e39cb05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &705740130247293175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8999845180316542267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb4f6704719d9e459daa479d5e537c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 3856997959632111052}
+  passthroughMaterial: {fileID: 2100000, guid: 8e63e1588afb49540a7c512a22c5a456, type: 2}
+  debugMaterial: {fileID: 2100000, guid: 543b651ad3494a6499aacc90e536b48d, type: 2}
+  useDebugMaterial: 0

@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 670190173264333139}
   - component: {fileID: 102490448831091297}
   - component: {fileID: 451294194964736692}
+  - component: {fileID: 756459752902076137}
   m_Layer: 9
   m_Name: OccludingPlane ECT
   m_TagString: Untagged
@@ -154,11 +155,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planePrefab: {fileID: 102490448831091297}
   volumePrefab: {fileID: 8013016026686888416, guid: 39405b287cfc44c7c8c0df5ff4b5f2b3, type: 3}
-  meshRenderer: {fileID: 4192131775074448735}
-  passthroughMaterial: {fileID: 2100000, guid: 8e63e1588afb49540a7c512a22c5a456, type: 2}
-  debugMaterial: {fileID: 2100000, guid: 7245164ab2418f842978c3bf27ce1ec8, type: 2}
   desiredSwitches:
   - label: DESK
     desiredGeometryType: 1
   - label: COUCH
     desiredGeometryType: 1
+--- !u!114 &756459752902076137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4350422998566360405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb4f6704719d9e459daa479d5e537c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 4192131775074448735}
+  passthroughMaterial: {fileID: 2100000, guid: 8e63e1588afb49540a7c512a22c5a456, type: 2}
+  debugMaterial: {fileID: 2100000, guid: 7245164ab2418f842978c3bf27ce1ec8, type: 2}
+  useDebugMaterial: 0

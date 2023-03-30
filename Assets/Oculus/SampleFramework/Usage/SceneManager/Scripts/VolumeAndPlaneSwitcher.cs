@@ -7,12 +7,6 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
     public OVRSceneAnchor planePrefab;
     public OVRSceneAnchor volumePrefab;
 
-    //TEST
-    public MeshRenderer meshRenderer;
-    public Material passthroughMaterial;
-    public Material debugMaterial;
-
-    public bool useDebugMaterial = false;
     public enum GeometryType
     {
     Plane,
@@ -26,13 +20,15 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
     }
     public List<LabelGeometryPair> desiredSwitches;
 
-    private void ReplaceAnchor(OVRSceneAnchor prefab, Vector3 position, Quaternion rotation, Vector3 localScale)
+    private void ReplaceAnchor(OVRSceneAnchor prefab, Vector3 position, Quaternion rotation, Vector3 localScale, string tag)
     {
     var anchor = Instantiate(prefab, transform.parent);
     anchor.enabled = false; // disable so it won't update transform
     anchor.InitializeFrom(GetComponent<OVRSceneAnchor>());
 
     anchor.transform.SetPositionAndRotation(position, rotation);
+    anchor.tag = tag;
+
     foreach (Transform child in anchor.transform)
     {
         child.localScale = localScale;
@@ -43,19 +39,12 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
 
     void Start()
     {
-#if UNITY_EDITOR
-        SetDebugMaterial(true);
-#endif
         var classification = GetComponent<OVRSemanticClassification>();
         if (!classification) return;
 
-        Debug.LogError("LABEL:  " + classification.Labels[0]);
-        //foreach (string label in classification.Labels)
-         //   Debug.LogWarning(label);
+        Debug.LogWarning("LABEL:  " + classification.Labels[0]);
         gameObject.tag = classification.Labels[0];
-        //TEST TAG
-        //gameObject.tag = "Player";
-        //   classification.
+        
         foreach (LabelGeometryPair pair in desiredSwitches)
         {
             if (classification.Contains(pair.label))
@@ -63,6 +52,8 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
                 Vector3 position = Vector3.zero;
                 Quaternion rotation = Quaternion.identity;
                 Vector3 localScale = Vector3.zero;
+                Debug.LogWarning("SWAP TYPE:  " + pair.desiredGeometryType);
+                Debug.LogWarning("SWAP LABEL:  " + classification.Labels[0]);
                 switch (pair.desiredGeometryType)
                 {
                     case GeometryType.Plane:
@@ -83,7 +74,7 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
                             out rotation,
                             out localScale);
                         Debug.Log($"OUT Plane Position {position}, Dimensions: {localScale}");
-                        ReplaceAnchor(planePrefab, position, rotation, localScale);
+                        ReplaceAnchor(planePrefab, position, rotation, localScale, gameObject.tag);
                         break;
                     }
                     case GeometryType.Volume:
@@ -105,7 +96,7 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
                             out rotation,
                             out localScale);
                         Debug.Log($"OUT Volume Position {position}, Dimensions: {localScale}");
-                        ReplaceAnchor(volumePrefab, position, rotation, localScale);
+                        ReplaceAnchor(volumePrefab, position, rotation, localScale, gameObject.tag);
                         break;
                     }
                 }
@@ -139,30 +130,5 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
         position = volume.position + Vector3.up * halfHeight;
         rotation = Quaternion.LookRotation(Vector3.up, -volume.forward);
         localScale = new Vector3(dimensions.x, dimensions.z, dimensions.y);
-    }
-
-    private void Update()
-    {
-        //TEST
-        bool pressingButton = OVRInput.Get(OVRInput.RawButton.B);
-        if (pressingButton)
-        {
-            SetDebugMaterial(!useDebugMaterial);
-        }
-    }
-
-    public void SetDebugMaterial(bool debug)
-    {
-        useDebugMaterial = debug;
-        if (useDebugMaterial)
-        {
-            Debug.LogError("SETTING DEBUG MAT");
-            meshRenderer.material = debugMaterial;
-        }
-        else
-        {
-            Debug.LogError("SETTING PASSTHROUGH MAT");
-            meshRenderer.material = passthroughMaterial;
-        }        
     }
 }
