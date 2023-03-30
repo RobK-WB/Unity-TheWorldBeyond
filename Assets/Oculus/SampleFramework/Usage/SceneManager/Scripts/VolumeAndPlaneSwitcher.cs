@@ -42,7 +42,7 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
         var classification = GetComponent<OVRSemanticClassification>();
         if (!classification) return;
 
-        Debug.LogWarning("LABEL:  " + classification.Labels[0]);
+        //Debug.LogWarning("LABEL:  " + classification.Labels[0]);
         gameObject.tag = classification.Labels[0];
         
         foreach (LabelGeometryPair pair in desiredSwitches)
@@ -52,8 +52,8 @@ public class VolumeAndPlaneSwitcher : MonoBehaviour
                 Vector3 position = Vector3.zero;
                 Quaternion rotation = Quaternion.identity;
                 Vector3 localScale = Vector3.zero;
-                Debug.LogWarning("SWAP TYPE:  " + pair.desiredGeometryType);
-                Debug.LogWarning("SWAP LABEL:  " + classification.Labels[0]);
+                //Debug.LogWarning("SWAP TYPE:  " + pair.desiredGeometryType);
+                //Debug.LogWarning("SWAP LABEL:  " + classification.Labels[0]);
                 switch (pair.desiredGeometryType)
                 {
                     case GeometryType.Plane:
