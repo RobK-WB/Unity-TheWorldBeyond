@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/ECT/Passthrough Test.unity
+    path: Assets/Passthrough Room/Passthrough Room.unity
     guid: 23e929ad59f767e42af6309040bb2673
   - enabled: 1
-    path: Assets/Passthrough Pet Test.unity
+    path: Assets/Passthrough Character/Passthrough Pet.unity
     guid: 4ddc1b981b59cdb468efaee7e6e69370
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 868607f3c8adc5640be127ed88803c8a, type: 2}
